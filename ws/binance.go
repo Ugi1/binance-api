@@ -1,6 +1,7 @@
 package ws
 
 import (
+	"fmt"
 	"net"
 	"strings"
 
@@ -10,6 +11,7 @@ import (
 )
 
 const DefaultPrefix = "wss://stream.binance.com:9443/ws/"
+const DefaultCombinedStreamPrefix = "wss://stream.binance.com:9443/stream?streams="
 
 type Client struct {
 	conn   net.Conn
@@ -99,6 +101,22 @@ func (c *Client) AllBookTickers() (*AllBookTicker, error) {
 // IndivBookTicker opens websocket with book ticker best bid or ask updates for the given symbol
 func (c *Client) IndivBookTicker(symbol string) (*IndivBookTicker, error) {
 	wsc, err := newWSClient(c.conn, c.Prefix, strings.ToLower(symbol), "@bookTicker")
+	if err != nil {
+		return nil, err
+	}
+
+	return &IndivBookTicker{NewConn(wsc)}, nil
+}
+
+// CombineIndivBookTicker opens websocket with combined book ticker best bid or ask updates for the given symbols
+func (c *Client) CombineIndivBookTicker(symbols []string) (*IndivBookTicker, error) {
+	path := ""
+	for _, s := range symbols {
+		path += fmt.Sprintf("%s@bookTicker", strings.ToLower(s)) + "/"
+	}
+	path = strings.TrimSuffix(path, "/")
+
+	wsc, err := newWSClient(c.conn, DefaultCombinedStreamPrefix, path)
 	if err != nil {
 		return nil, err
 	}
