@@ -7,7 +7,7 @@ import (
 
 	"github.com/xenking/websocket"
 
-	"github.com/xenking/binance-api"
+	"github.com/ugi1/binance-api"
 )
 
 const DefaultPrefix = "wss://stream.binance.com:9443/ws/"
