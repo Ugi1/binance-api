@@ -1,6 +1,7 @@
 package ws
 
 import (
+	"github.com/ugi1/binance-api"
 	"math/rand"
 	"net"
 	"net/http"
@@ -10,8 +11,6 @@ import (
 	"github.com/segmentio/encoding/json"
 	"github.com/stretchr/testify/suite"
 	"github.com/xenking/websocket"
-
-	"github.com/xenking/binance-api"
 )
 
 func TestWSClient(t *testing.T) {
@@ -258,6 +257,34 @@ func (s *clientTestSuite) TestIndivBookTickers_Stream() {
 	for u := range ws.Stream() {
 		s.Require().NoError(ws.err)
 		s.Require().Equal(symbol, u.Symbol)
+		break
+	}
+}
+
+func (s *clientTestSuite) TestCombinedIndivBookTickers_Read() {
+	symbols := []string{"BTCUSDT", "ETHUSDT"}
+	ws, err := s.ws.CombineIndivBookTicker(symbols)
+
+	s.Require().NoError(err)
+	defer ws.Close()
+
+	u, err := ws.Read()
+	s.Require().NoError(err)
+	s.Require().NotEmpty(u)
+}
+
+func (s *clientTestSuite) TestCombinedIndivBookTickers_Stream() {
+	symbols := []string{"BTCUSDT", "ETHUSDT"}
+
+	ws, err := s.ws.CombineIndivBookTicker(symbols)
+	s.Require().NoError(err)
+	defer ws.Close()
+
+	result := ws.Stream()
+	for u := range result {
+
+		s.Require().NoError(ws.err)
+		s.Require().NotEmpty(u)
 		break
 	}
 }
@@ -787,4 +814,13 @@ func (s *mockedTestSuite) TestAccountInfo_OCOOrdersStream() {
 	s.Require().NoError(err)
 	err = ws.Shutdown()
 	s.Require().NoError(err)
+}
+
+func Contains(sl []string, name string) bool {
+	for _, value := range sl {
+		if value == name {
+			return true
+		}
+	}
+	return false
 }

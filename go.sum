@@ -35,14 +35,14 @@ github.com/valyala/fasthttp v1.40.0/go.mod h1:t/G+3rLek+CyY9bnIE+YlMRddxVAAGjhxn
 github.com/valyala/fastrand v1.1.0 h1:f+5HkLW4rsgzdNoleUOB69hyT9IlD2ZQh9GyDMfb5G8=
 github.com/valyala/fastrand v1.1.0/go.mod h1:HWqCzkrkg6QXT8V2EXWvXCoow7vLwOFN002oeRzjapQ=
 github.com/valyala/tcplisten v1.0.0/go.mod h1:T0xQ8SeCZGxckz9qRXTfG43PvQ/mcWh7FwZEA7Ioqkc=
+github.com/xenking/binance-api v1.9.1 h1:ImeAT2PeAWTLCDA1I8pnUeqwu5Z75kg1TA7equh7CJk=
+github.com/xenking/binance-api v1.9.1/go.mod h1:nBcrVMSHRg8P9+iREbGPigkixt8gQGM1d3qGYXF+AAA=
 github.com/xenking/bytebufferpool v1.1.0 h1:xbAh59Ihh81vmlK6DsSsBi/Uo8KeIxiOJkAfWNCXscs=
 github.com/xenking/bytebufferpool v1.1.0/go.mod h1:GGTH45tL+BHIjyaGfrMWM7UT0ZCaW0a9Y3c/GfW8EDg=
 github.com/xenking/decimal v1.3.5 h1:LywO1/UdsET8lTnU4zNhTAcZcC0dv4nrwREk3nTepyw=
 github.com/xenking/decimal v1.3.5/go.mod h1:bKaX9swc/dBJqj8Y+IDw2TN9SXat+JfpR17HREpzEsA=
 github.com/xenking/http2 v0.2.0 h1:/TKdNq1gaM3pfhFDLqwJrW4Fft6XevY0A5IZrQcFZc0=
 github.com/xenking/http2 v0.2.0/go.mod h1:zLUhLTPLJ5t97r1MjFrI6XGPB1jwqFM67mDFzVmscvo=
-github.com/xenking/websocket v1.0.1 h1:7dywsiGfqer6mGe8o7JtjhNe/4nJYJguZe55MHGLxEQ=
-github.com/xenking/websocket v1.0.1/go.mod h1:+N9CIdqpP0el8YuNxqw7poMybzCZN09jv44UwMFCwT4=
 github.com/xenking/websocket v1.0.3 h1:GxfZjyNbOhbAqt4/BIpBX94aDgtcp0fmA2J/COzBq5o=
 github.com/xenking/websocket v1.0.3/go.mod h1:pISa6i2v6ma4p7xKykBO/d5pQjL8o+UJlX8mAG0PLQ8=
 golang.org/x/crypto v0.0.0-20220214200702-86341886e292/go.mod h1:IxCIyHEi3zRg3s0A5j5BB6A9Jmi73HwBIUl50j+osU4=
@@ -58,8 +58,6 @@ golang.org/x/sys v0.0.0-20211110154304-99a53858aa08/go.mod h1:oPkhp1MJrh7nUepCBc
 golang.org/x/sys v0.0.0-20211216021012-1d35b9e2eb4e/go.mod h1:oPkhp1MJrh7nUepCBck5+mAzfO9JrbApNNgaTdGDITg=
 golang.org/x/sys v0.0.0-20220227234510-4e6760a101f9/go.mod h1:oPkhp1MJrh7nUepCBck5+mAzfO9JrbApNNgaTdGDITg=
 golang.org/x/sys v0.0.0-20220412211240-33da011f77ad/go.mod h1:oPkhp1MJrh7nUepCBck5+mAzfO9JrbApNNgaTdGDITg=
-golang.org/x/sys v0.0.0-20220909162455-aba9fc2a8ff2 h1:wM1k/lXfpc5HdkJJyW9GELpd8ERGdnh8sMGL6Gzq3Ho=
-golang.org/x/sys v0.0.0-20220909162455-aba9fc2a8ff2/go.mod h1:oPkhp1MJrh7nUepCBck5+mAzfO9JrbApNNgaTdGDITg=
 golang.org/x/sys v0.0.0-20220913175220-63ea55921009 h1:PuvuRMeLWqsf/ZdT1UUZz0syhioyv1mzuFZsXs4fvhw=
 golang.org/x/sys v0.0.0-20220913175220-63ea55921009/go.mod h1:oPkhp1MJrh7nUepCBck5+mAzfO9JrbApNNgaTdGDITg=
 golang.org/x/term v0.0.0-20201126162022-7de9c90e9dd1/go.mod h1:bj7SfCRtBDWHUb9snDiAeCFNEtKQo2Wmx5Cou7ajbmo=

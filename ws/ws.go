@@ -331,6 +331,38 @@ func (t *AllBookTicker) Stream() <-chan *AllBookTickerUpdate {
 	return updates
 }
 
+// CombinedBookTicker is a wrapper for all book tickers websocket
+type CombinedBookTicker struct {
+	Conn
+}
+
+// Read reads a book update message from combined book tickers websocket
+func (t *CombinedBookTicker) Read() (*CombinedBookTickerUpdate, error) {
+	r := &CombinedBookTickerUpdate{}
+	err := t.Conn.ReadValue(r)
+
+	return r, err
+}
+
+// Stream NewStream a book update message from combined book tickers websocket to channel
+func (t *CombinedBookTicker) Stream() <-chan *CombinedBookTickerUpdate {
+	updates := make(chan *CombinedBookTickerUpdate)
+	cb := func(data []byte) error {
+		u := &CombinedBookTickerUpdate{}
+		if err := json.Unmarshal(data, u); err != nil {
+			return err
+		}
+		updates <- u
+
+		return nil
+	}
+	go t.NewStream(func() {
+		close(updates)
+	}, cb)
+
+	return updates
+}
+
 // IndivBookTicker is a wrapper for an individual book ticker websocket
 type IndivBookTicker struct {
 	Conn

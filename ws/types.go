@@ -91,6 +91,12 @@ type IndivBookTickerUpdate struct {
 // AllBookTickerUpdate represents incoming ticker websocket feed for all book tickers
 type AllBookTickerUpdate IndivBookTickerUpdate
 
+type CombinedBookTickerUpdate struct {
+	Stream string                `json:"stream"`
+	Data   IndivBookTickerUpdate `json:"data"`
+	//UnixMilli int64
+}
+
 // IndivMiniTickerUpdate represents incoming mini-ticker websocket feed
 type IndivMiniTickerUpdate struct {
 	EventType   UpdateType `json:"e"` // EventType represents the update type

@@ -109,7 +109,7 @@ func (c *Client) IndivBookTicker(symbol string) (*IndivBookTicker, error) {
 }
 
 // CombineIndivBookTicker opens websocket with combined book ticker best bid or ask updates for the given symbols
-func (c *Client) CombineIndivBookTicker(symbols []string) (*IndivBookTicker, error) {
+func (c *Client) CombineIndivBookTicker(symbols []string) (*CombinedBookTicker, error) {
 	path := ""
 	for _, s := range symbols {
 		path += fmt.Sprintf("%s@bookTicker", strings.ToLower(s)) + "/"
@@ -121,7 +121,7 @@ func (c *Client) CombineIndivBookTicker(symbols []string) (*IndivBookTicker, err
 		return nil, err
 	}
 
-	return &IndivBookTicker{NewConn(wsc)}, nil
+	return &CombinedBookTicker{NewConn(wsc)}, nil
 }
 
 // Klines opens websocket with klines updates for the given symbol with the given interval
